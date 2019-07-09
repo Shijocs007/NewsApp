@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MVP Example</string>
+    <string name="short_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+</resources>
