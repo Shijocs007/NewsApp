@@ -20,6 +20,7 @@ public class NewsListPresenter implements NewsListMVP.Presenter{
 
     @Override
     public void loadData() {
+        view.showProgressDialog();
         disposable = model.result()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -35,12 +36,14 @@ public class NewsListPresenter implements NewsListMVP.Presenter{
                     @Override
                     public void onError(Throwable e) {
                         if (view != null) {
+                            view.dismissProgressDialog();
                             view.showSnackbar("Error getting movies");
                         }
                     }
 
                     @Override
                     public void onComplete() {
+                        view.dismissProgressDialog();
                     }
                 });
     }

@@ -13,6 +13,10 @@ public interface NewsListMVP {
 
         void showSnackbar(String s);
 
+        void showProgressDialog();
+
+        void dismissProgressDialog();
+
     }
 
     interface Presenter {

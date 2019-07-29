@@ -17,7 +17,6 @@ import com.shijo.mvpexample.root.NewsAppActivity;
 public class NewsDetailsActivity extends NewsAppActivity {
 
     private ImageView imageView;
-    private TextView tvAuther;
     private  TextView tvTittle;
     private TextView tvDetails;
     @Override
@@ -26,7 +25,6 @@ public class NewsDetailsActivity extends NewsAppActivity {
         setContentView(R.layout.activity_news_details);
 
         imageView = (ImageView) findViewById(R.id.image);
-        tvAuther = (TextView) findViewById(R.id.auther);
         tvTittle = (TextView) findViewById(R.id.title);
         tvDetails = (TextView) findViewById(R.id.news_details);
 
@@ -38,7 +36,6 @@ public class NewsDetailsActivity extends NewsAppActivity {
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(imageView);
 
-            tvAuther.setText(bundle.getString("author", ""));
             tvTittle.setText(bundle.getString("title", ""));
             tvDetails.setText(bundle.getString("details", ""));
         }

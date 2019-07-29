@@ -54,6 +54,16 @@ public class NewsListActivity extends NewsAppActivity implements NewsListMVP.Vie
     }
 
     @Override
+    public void showProgressDialog() {
+        showProgress("Loading...");
+    }
+
+    @Override
+    public void dismissProgressDialog() {
+        dismissProgress();
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         presenter.setView(this);
@@ -73,8 +83,7 @@ public class NewsListActivity extends NewsAppActivity implements NewsListMVP.Vie
         Intent intent = new Intent(this, NewsDetailsActivity.class);
         intent.putExtra("image", article.getUrlToImage());
         intent.putExtra("title", article.getTitle());
-        intent.putExtra("author", article.getAuthor());
-        intent.putExtra("details", article.getContent());
+        intent.putExtra("details", article.getDescription());
         startActivity(intent);
     }
 }
