@@ -13,6 +13,9 @@ public class NewsListModel implements NewsListMVP.Model{
         this.repository = repository;
     }
 
+    /**
+     * this method will request data from the network request
+     * And return as Observable */
     @Override
     public Observable<Article> result() {
         return repository.getNewsData();

@@ -78,6 +78,9 @@ public class NewsListActivity extends NewsAppActivity implements NewsListMVP.Vie
         mAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * this method will be called when a news item is clicked.
+     * @param article selected article item  */
     @Override
     public void onItemClicked(Article article) {
         Intent intent = new Intent(this, NewsDetailsActivity.class);

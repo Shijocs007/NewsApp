@@ -20,7 +20,9 @@ public class NewsApiModule {
     public static  final String BASE_URL = "https://newsapi.org/";
     public static final String API_KEY = "03d39f5ae5a8468d9e0ac82ee584d3cc";
 
-
+    /**
+    * provide OkHttpClient client
+    */
     @Provides
     public OkHttpClient provideClient() {
 
@@ -38,6 +40,10 @@ public class NewsApiModule {
         }).build();
     }
 
+    /**
+     * provide Retrofit instance for the app
+     * @param baseURL base url of the API
+     * @param  client OKHttpClient needed for the app*/
     @Provides
     public Retrofit provideRetrofit(String baseURL, OkHttpClient client) {
         return new Retrofit.Builder()
@@ -48,6 +54,8 @@ public class NewsApiModule {
                 .build();
     }
 
+    /**
+     * This method provide Retrofit interface of all network requests*/
     @Provides
     public NewsApiService provideApiService() {
         return provideRetrofit(BASE_URL, provideClient()).create(NewsApiService.class);

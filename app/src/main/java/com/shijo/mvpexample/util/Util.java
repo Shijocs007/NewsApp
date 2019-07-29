@@ -4,6 +4,9 @@ import java.util.Calendar;
 
 public class Util {
 
+    /**
+     * return the current date of the system
+     * the format will be YYYY-MM_DD */
     public String getTodayDate() {
 
         String date = "";
