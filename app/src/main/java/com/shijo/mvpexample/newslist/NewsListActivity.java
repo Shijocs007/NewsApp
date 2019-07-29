@@ -1,5 +1,6 @@
 package com.shijo.mvpexample.newslist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.shijo.mvpexample.R;
 import com.shijo.mvpexample.http.apimodel.Article;
+import com.shijo.mvpexample.newsdetails.NewsDetailsActivity;
 import com.shijo.mvpexample.root.NewsApplication;
 
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class NewsListActivity extends AppCompatActivity implements NewsListMVP.View{
+public class NewsListActivity extends AppCompatActivity implements NewsListMVP.View, IAdapterListener{
 
     private RecyclerView recyclerView;
     private NewsListAdapter mAdapter;
@@ -36,7 +38,7 @@ public class NewsListActivity extends AppCompatActivity implements NewsListMVP.V
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         List<Article> articles = new ArrayList<>();
-        mAdapter = new NewsListAdapter(articles, this);
+        mAdapter = new NewsListAdapter(articles, this, this);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -63,5 +65,15 @@ public class NewsListActivity extends AppCompatActivity implements NewsListMVP.V
         presenter.rxUnsubscribe();
         articles.clear();
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClicked(Article article) {
+        Intent intent = new Intent(this, NewsDetailsActivity.class);
+        intent.putExtra("image", article.getUrlToImage());
+        intent.putExtra("title", article.getTitle());
+        intent.putExtra("author", article.getAuthor());
+        intent.putExtra("details", article.getContent());
+        startActivity(intent);
     }
 }

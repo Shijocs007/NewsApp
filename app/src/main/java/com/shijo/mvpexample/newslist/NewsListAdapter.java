@@ -20,10 +20,12 @@ public class NewsListAdapter  extends RecyclerView.Adapter<NewsListAdapter.ViewH
 
     private List<Article> newsList;
     Context mContext;
+    private IAdapterListener iAdapterListener;
 
-    public NewsListAdapter(List<Article> list, Context context) {
+    public NewsListAdapter(List<Article> list, Context context, IAdapterListener iAdapterListener) {
         this.newsList = list;
         mContext = context;
+        this.iAdapterListener = iAdapterListener;
     }
 
     @NonNull
@@ -39,11 +41,11 @@ public class NewsListAdapter  extends RecyclerView.Adapter<NewsListAdapter.ViewH
 
         Article article = newsList.get(i);
         viewHolder.title.setText(article.getTitle());
-        viewHolder.subtitle.setText(article.getContent());
+        viewHolder.subtitle.setText(article.getDescription());
         viewHolder.date.setText(article.getPublishedAt());
         Glide.with(mContext).load(article.getUrlToImage())
                 .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(viewHolder.image);
 
     }
@@ -72,6 +74,13 @@ public class NewsListAdapter  extends RecyclerView.Adapter<NewsListAdapter.ViewH
             subtitle = itemView.findViewById(R.id.subtitle);
             date = itemView.findViewById(R.id.date);
             lyt_parent = itemView.findViewById(R.id.lyt_parent);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    iAdapterListener.onItemClicked(newsList.get(getAdapterPosition()));
+                }
+            });
         }
     }
 }
