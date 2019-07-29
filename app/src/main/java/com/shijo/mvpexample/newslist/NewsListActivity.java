@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import com.shijo.mvpexample.R;
 import com.shijo.mvpexample.http.apimodel.Article;
 import com.shijo.mvpexample.newsdetails.NewsDetailsActivity;
+import com.shijo.mvpexample.root.NewsAppActivity;
 import com.shijo.mvpexample.root.NewsApplication;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class NewsListActivity extends AppCompatActivity implements NewsListMVP.View, IAdapterListener{
+public class NewsListActivity extends NewsAppActivity implements NewsListMVP.View, IAdapterListener{
 
     private RecyclerView recyclerView;
     private NewsListAdapter mAdapter;

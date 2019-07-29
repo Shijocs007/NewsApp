@@ -10,6 +10,7 @@
     <color name="grey_40">#999999</color>
     <color name="grey_60">#666666</color>
     <color name="grey_80">#37474F</color>
-
+    <color name="white">#FFFFFF</color>
+    <color name="iron">#CCCCCC</color>
     <color name="overlay_dark_40">#66000000</color>
 </resources>

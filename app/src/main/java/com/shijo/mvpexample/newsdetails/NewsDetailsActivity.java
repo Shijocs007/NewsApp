@@ -12,8 +12,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.shijo.mvpexample.R;
+import com.shijo.mvpexample.root.NewsAppActivity;
 
-public class NewsDetailsActivity extends AppCompatActivity {
+public class NewsDetailsActivity extends NewsAppActivity {
 
     private ImageView imageView;
     private TextView tvAuther;

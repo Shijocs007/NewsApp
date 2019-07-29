@@ -8,6 +8,9 @@ public class Article {
     @SerializedName("source")
     @Expose
     private Source source;
+    @SerializedName("id")
+    @Expose
+    private String id;
     @SerializedName("author")
     @Expose
     private String author;
@@ -29,6 +32,14 @@ public class Article {
     @SerializedName("content")
     @Expose
     private String content;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Source getSource() {
         return source;
